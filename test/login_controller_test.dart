@@ -39,4 +39,16 @@ void main() {
       expect(result, 'your password les that 6 chracter');
     });
   });
+
+
+
+group("Mock test", (){
+ test("get user info", (){
+
+   
+ });
+
+
+});
+
 }

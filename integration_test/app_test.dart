@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_getx_template/app/controllers/login_controller.dart';
 import 'package:flutter_getx_template/app/views/screens/login_screen.dart';
@@ -14,7 +16,6 @@ void main() {
     testWidgets("full app test", (tester) async {
 //1 - execute app.main()
       app.main();
-    
 
 //2- waite untel the app settled
       await tester.pumpAndSettle();
@@ -22,18 +23,22 @@ void main() {
 // 3- find text form feaild
 
       final testKey = Key('log');
-      
+
       final goToLoginPage = find.byKey(testKey);
       await tester.tap(goToLoginPage);
       await tester.pumpAndSettle();
 
       final unKey = Key('username');
-       final psKey = Key('password');
-       await tester.enterText(find.byKey(unKey), "abd@gmail.com");
-       await tester.enterText(find.byKey(psKey), "123456");
+      final psKey = Key('password');
+
+      await tester.enterText(find.byKey(unKey), "abd@gmail.com");
+      await tester.enterText(find.byKey(psKey), "123456");
       final loginButton = find.byType(ElevatedButton).first;
       await tester.tap(loginButton);
       await tester.pumpAndSettle();
     });
   });
 }
+// flutter drive \
+//   --driver=test_driver/integration_test_driver.dart \
+//   --target=integration_test/app_test.dart
